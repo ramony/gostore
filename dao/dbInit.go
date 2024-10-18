@@ -5,6 +5,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"github.com/ramony/gostore/models"
 )
 
 const (
@@ -21,6 +22,6 @@ func init() {
 		panic("db error")
 	}
 	db.SingularTable(true)
-	// db.AutoMigrate(&uploadFile{})
+	db.AutoMigrate(&models.Photo{})
 	//defer DB2.Close()
 }

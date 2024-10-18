@@ -1,0 +1,89 @@
+<html>
+
+<head>
+  <title>这是我们的家庭</title>
+  <style>
+    #gallery {
+      column-count: 4;
+      column-gap: 20px;
+    }
+
+    #gallery img {
+      width: 100%;
+      height: auto;
+      margin: 4% auto;
+      box-shadow: -3px 5px 15px #000;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .fullscreen-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .fullscreen-modal img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin: auto;
+    }
+
+    @media (max-width:1200px) {
+      #gallery {
+        column-count: 4;
+        column-gap: 20px;
+      }
+    }
+
+    @media (max-width:800px) {
+      #gallery {
+        column-count: 3;
+        column-gap: 20px;
+      }
+    }
+
+    @media (max-width:600px) {
+      #gallery {
+        column-count: 2;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="gallery" class="gallery container-fluid">
+    {{range .photos}}
+    <img src="{{.NewFileName}}" class="img-responsive">
+    {{end}}
+    <!-- 此处省略一亿张猫猫图片 -->
+  </div>
+
+  <div class="fullscreen-modal">
+    <img src="" alt="Fullscreen Image" id="fullscreen-image">
+  </div>
+
+  <script>
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', function () {
+        document.getElementById('fullscreen-image').src = this.src;
+        document.querySelector('.fullscreen-modal').style.display = 'flex';
+      });
+    });
+
+    document.getElementById('fullscreen-image').addEventListener('click', function () {
+      document.querySelector('.fullscreen-modal').style.display = 'none';
+    });
+  </script>
+</body>
+
+</html>

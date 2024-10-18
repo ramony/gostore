@@ -1,3 +1,1 @@
-GOOS=linux 
-GOARCH=arm
-go build
+GOOS=linux GOARCH=arm go build

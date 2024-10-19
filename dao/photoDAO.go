@@ -13,7 +13,7 @@ func SavePhoto(photo models.Photo) error {
 
 func ListPhotos() ([]models.Photo, error) {
 	var photos []models.Photo
-	if err := db.Limit(10).Find(&photos).Error; err != nil {
+	if err := db.Limit(1000).Find(&photos).Error; err != nil {
 		return nil, err
 	}
 	return photos, err

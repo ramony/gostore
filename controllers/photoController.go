@@ -16,7 +16,6 @@ func bindGallery(gallery *gin.RouterGroup) {
 	gallery.GET("/list", listPhotos)
 	gallery.GET("/upload", uploadPage)
 	gallery.POST("/upload", uploadPhoto)
-
 }
 
 func uploadPage(c *gin.Context) {
@@ -64,7 +63,7 @@ func listPhotos(c *gin.Context) {
 		c.JSON(400, response)
 		return
 	}
-	c.HTML(http.StatusOK, "photos.html", gin.H{
+	c.HTML(http.StatusOK, "gallery/photos.html", gin.H{
 		"photos": photos,
 	})
 

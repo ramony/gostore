@@ -9,5 +9,5 @@ import (
 func main() {
 	fmt.Println("Server is running!")
 	server := controllers.Router()
-	server.Run(":8090")
+	server.Run(":80")
 }

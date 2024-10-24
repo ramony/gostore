@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	Mysqldb = "rayuser:123456@tcp(192.168.0.107:3306)/jstoremini?charset=utf8"
+	Mysqldb = "rayuser:123456@tcp(192.168.0.107:3306)/jstoremini?charset=utf8&parseTime=true"
 )
 
 var db *gorm.DB
@@ -23,5 +23,7 @@ func init() {
 	}
 	db.SingularTable(true)
 	db.AutoMigrate(&models.Photo{})
+	db.AutoMigrate(&models.FileDO{})
+
 	//defer DB2.Close()
 }

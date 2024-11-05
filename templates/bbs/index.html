@@ -1,0 +1,71 @@
+{{ define "bbs/index.html"}}
+<html>
+
+<head>
+  <title>File List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .container>div {
+      text-align: center;
+      box-sizing: border-box;
+      padding: 20px;
+      background: #CCE8CF;
+      min-height: 35px;
+      margin: 5px 10px 0 0;
+      cursor: pointer;
+      padding: 10px 0 0 12px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px 0px #F6C
+    }
+
+    .container>div:nth-child(even) {
+      background-color: #DDEADF;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .flex-item-2 {
+      flex: 2;
+      /* min-width: 100px; */
+      text-overflow: ellipsis;
+      word-break: break-all;
+    }
+
+    .flex-item-1 {
+      flex: 1;
+      /* min-width: 100px; */
+      text-overflow: ellipsis;
+      word-break: break-all;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="./save" method="post" enctype="multipart/form-data">
+    <label for="fileToUpload">Text:</label>
+    <input type="text" name="content" id="content" placeholder="content">
+    <input type="submit" value="Save" name="submit">
+  </form>
+
+  <div id="bbs" class="container container-fluid">
+    {{range .bbsList}}
+    <div class="flex-container">
+      <div class="flex-item-2">
+        {{.Content}}
+      </div>
+      <div class="flex-item-1">
+        {{.CreateTime.Format "01-02 15:04"}}
+      </div>
+    </div>
+    {{end}}
+  </div>
+
+</body>
+
+</html>
+
+{{ end }}

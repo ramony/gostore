@@ -24,6 +24,7 @@ func init() {
 	db.SingularTable(true)
 	db.AutoMigrate(&models.Photo{})
 	db.AutoMigrate(&models.FileDO{})
+	db.AutoMigrate(&models.BBSDO{})
 
 	//defer DB2.Close()
 }

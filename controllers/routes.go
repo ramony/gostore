@@ -24,6 +24,9 @@ func Router() *gin.Engine {
 		files := v1.Group("/files")
 		bindFiles(files)
 
+		bbs := v1.Group("/bbs")
+		bindBbs(bbs)
+
 		v1.GET("/", func(c *gin.Context) {
 			c.HTML(http.StatusOK, "index/index.html", gin.H{})
 		})
